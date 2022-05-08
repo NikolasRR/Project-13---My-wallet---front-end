@@ -16,14 +16,14 @@ function SignInScreen() {
 
     const LogIn = function (ev) {
         ev.preventDefault();
-        console.log("oi")
+        
         const promisse = axios.post("http://localhost:5000/sign-in", 
         {
             email: email,
             password: password
         });
         promisse.then(serverAnswer => {
-            setToken(serverAnswer.data.token);
+            setToken(serverAnswer.data);
             navigate("/main");
         });
         promisse.catch(error => {

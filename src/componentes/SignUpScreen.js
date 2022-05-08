@@ -11,25 +11,35 @@ function SignUpScreen () {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setpassword] = useState("");
+    const [password1, setpassword1] = useState("");
+    const [password2, setpassword2] = useState("");
     const { setToken } = useContext(TokenContext);
 
 
     const LogIn = function (ev) {
         ev.preventDefault();
-        console.log("oi");
+
+        if (password1 !== password2) {
+            alert("As senhas precisam ser iguais");
+            return;
+        }
+
         const promisse = axios.post("http://localhost:5000/sign-up", 
         {
             name: name,
             email: email,
-            password: password
+            password: password1
         });
         promisse.then(serverAnswer => {
             setToken(serverAnswer.data.token);
             navigate("/main");
         });
         promisse.catch(error => {
-            alert("Usuário ou senha incorretos");
+            if (error.response.status === 409) {
+                alert("E-mail já cadastrado");
+                return;
+            }
+            alert("Ocorreu um erro");
         });
     }
 
@@ -37,13 +47,13 @@ function SignUpScreen () {
         <Div>
             <img src={MyWallet} alt="logo" />
             <Form onSubmit={ev => LogIn(ev)}>
-                <Input placeholder="Nome" value={name} onChange={ev => setName(ev.target.value)}></Input>
-                <Input placeholder="E-mail" value={email} onChange={ev => setEmail(ev.target.value)}></Input>
-                <Input placeholder="Senha" value={password} onChange={ev => setpassword(ev.target.value)}></Input>
-                <Input placeholder="Confirme a senha" value={password} onChange={ev => setpassword(ev.target.value)}></Input>
+                <Input placeholder="Nome" value={name} onChange={ev => setName(ev.target.value)} type="text"></Input>
+                <Input placeholder="E-mail" value={email} onChange={ev => setEmail(ev.target.value)} type="email"></Input>
+                <Input placeholder="Senha" value={password1} onChange={ev => setpassword1(ev.target.value)} type="password"></Input>
+                <Input placeholder="Confirme a senha" value={password2} onChange={ev => setpassword2(ev.target.value)} type="password"></Input>
                 <Button type="submit">Cadastrar</Button>
             </Form>
-            <StyledLink to="/sign-in">Já tem uma conta? Entre agora!</StyledLink>
+            <StyledLink to="/">Já tem uma conta? Entre agora!</StyledLink>
         </Div>
     )
 }
