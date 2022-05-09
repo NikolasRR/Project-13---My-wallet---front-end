@@ -55,7 +55,7 @@ function MainScreen() {
                 <H1>Olá, {name}</H1>
                 <ion-icon style={{ color: "#FFFFFF", fontSize: "26px" }} onClick={() => exit()} name="exit-outline"></ion-icon>
             </Header>
-            {statement.length > 0 ? (
+            {statement?.length > 0 ? (
                 <Statement>
                     {statement.map((transaction, index) => <Transaction key={index} transaction={transaction} />)}
                     <Total>
