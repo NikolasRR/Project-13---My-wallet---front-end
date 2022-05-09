@@ -30,8 +30,8 @@ function SignUpScreen () {
             email: email,
             password: password1
         });
-        promisse.then(serverAnswer => {
-            setToken(serverAnswer.data.token);
+        promisse.then(res => {
+            setToken(res.data.token);
             navigate("/main");
         });
         promisse.catch(error => {

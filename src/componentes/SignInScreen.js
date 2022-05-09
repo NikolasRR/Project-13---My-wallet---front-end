@@ -11,7 +11,7 @@ function SignInScreen() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
-    const { setToken } = useContext(TokenContext);
+    const { token, setToken } = useContext(TokenContext);
 
 
     const LogIn = function (ev) {
@@ -22,8 +22,9 @@ function SignInScreen() {
             email: email,
             password: password
         });
-        promisse.then(serverAnswer => {
-            setToken(serverAnswer.data);
+        promisse.then(res => {
+            localStorage.setItem("userToken", JSON.stringify(res.data));
+            setToken(res.data);
             navigate("/main");
         });
         promisse.catch(error => {
