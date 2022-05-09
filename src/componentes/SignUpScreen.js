@@ -23,7 +23,7 @@ function SignUpScreen () {
             return;
         }
 
-        const promisse = axios.post("http://localhost:5000/sign-up", 
+        const promisse = axios.post("https://mywalletproject13.herokuapp.com/sign-up", 
         {
             name: name,
             email: email,

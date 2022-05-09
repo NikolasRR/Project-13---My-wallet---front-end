@@ -20,7 +20,7 @@ function NewTransactionScreen() {
     function saveTransaction(ev) {
         ev.preventDefault();
         
-        axios.post("http://localhost:5000/transaction", 
+        axios.post("https://mywalletproject13.herokuapp.com/transaction", 
             {
                 value: profitOrSpent === "profit" ? value : -value,
                 description: description

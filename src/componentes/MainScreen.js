@@ -19,7 +19,7 @@ function MainScreen() {
 
     useEffect(() => {
         if (token) {
-            axios.get("http://localhost:5000/main",
+            axios.get("https://mywalletproject13.herokuapp.com/main",
                 {
                     headers: { Authorization: `Bearer ${token}` }
                 })
