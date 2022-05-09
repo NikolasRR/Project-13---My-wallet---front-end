@@ -5,13 +5,11 @@ import axios from "axios";
 
 import TokenContext from "../contexts/TokenContext";
 
-import MyWallet from "./../assets/imgs/MyWallet.png";
-
 function SignInScreen() {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setpassword] = useState("");
-    const { token, setToken } = useContext(TokenContext);
+    const { setToken } = useContext(TokenContext);
 
 
     const LogIn = function (ev) {
@@ -34,10 +32,10 @@ function SignInScreen() {
 
     return (
         <Div>
-            <img src={MyWallet} alt="logo" />
+            <H1>My Wallet</H1>
             <Form onSubmit={ev => LogIn(ev)}>
-                <Input placeholder="E-mail" value={email} onChange={ev => setEmail(ev.target.value)}></Input>
-                <Input placeholder="Senha" value={password} onChange={ev => setpassword(ev.target.value)}></Input>
+                <Input placeholder="   E-mail" value={email} type="email" onChange={ev => setEmail(ev.target.value)}></Input>
+                <Input placeholder="   Senha" value={password} type="password" onChange={ev => setpassword(ev.target.value)}></Input>
                 <Button type="submit">Entrar</Button>
             </Form>
             <StyledLink to="/sign-up">Primeira vez? Cadastre-se!</StyledLink>
@@ -48,11 +46,21 @@ function SignInScreen() {
 export default SignInScreen;
 
 const Div = styled.div`
-    background-color: #A328D6;
+    background-color: #8C11BE;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 375px;
+    height: 100vh;
+`;
+
+const H1 = styled.h1`
+    margin: 159px 0 24px 0;
+    height: 50px;
+    font-size: 32px;
+    line-height: 50px;
+    color: #FFFFFF;
+    font-family: 'Saira Stencil One', cursive;
 `;
 
 const Form = styled.form`
@@ -64,11 +72,32 @@ const Form = styled.form`
 
 const Input = styled.input`
     width: 326px;
+    height: 58px;
+    border-radius: 5px;
+    margin-bottom: 13px;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    line-height: 23px;
 `;
 
 const Button = styled.button`
     width: 326px;
+    height: 46px;
+    border-radius: 5px;
+    background-color: #A328D6;
+    border: none;
+    margin-bottom: 36px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+    font-weight: 700;
 `;
 
 const StyledLink = styled(Link)`
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
 `;

@@ -1,0 +1,8 @@
+.root {
+    display: flex;
+    justify-content: center;
+}
+
+input::placeholder {
+    color: #000000;
+}

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 function Transaction (props) {
     const { date, value, description } = props.transaction;
-    console.log(value, description)
     return (
         <Section>
             <Div>

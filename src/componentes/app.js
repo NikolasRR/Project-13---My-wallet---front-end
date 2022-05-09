@@ -15,7 +15,7 @@ import "../assets/css/style.css";
 
 function App() {
     const [token, setToken] = useState(null);
-    const [profitOrSpent, setProfitOrSpent] = useState(null);
+    const [profitOrSpent, setProfitOrSpent] = useState("");
 
     useEffect(() => {
         if (localStorage.getItem("userToken") !== null) {
