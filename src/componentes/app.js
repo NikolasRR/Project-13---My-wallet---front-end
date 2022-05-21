@@ -28,7 +28,7 @@ function App() {
         if (token) {
             const attStatus = setInterval(() => {
                 console.log("rodou uma vez")
-                axios.post("https://mywalletproject13.herokuapp.com/status", {},
+                axios.post("http://localhost:5000/status", {},
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     })

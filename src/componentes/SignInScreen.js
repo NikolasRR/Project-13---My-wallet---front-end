@@ -15,7 +15,7 @@ function SignInScreen() {
     const LogIn = function (ev) {
         ev.preventDefault();
         
-        const promisse = axios.post("https://mywalletproject13.herokuapp.com/sign-in", 
+        const promisse = axios.post("http://localhost:5000/sign-in", 
         {
             email: email,
             password: password
@@ -34,8 +34,8 @@ function SignInScreen() {
         <Div>
             <H1>My Wallet</H1>
             <Form onSubmit={ev => LogIn(ev)}>
-                <Input placeholder="   E-mail" value={email} type="email" onChange={ev => setEmail(ev.target.value)}></Input>
-                <Input placeholder="   Senha" value={password} type="password" onChange={ev => setpassword(ev.target.value)}></Input>
+                <Input placeholder="E-mail" value={email} type="email" onChange={ev => setEmail(ev.target.value)}></Input>
+                <Input placeholder="Senha" value={password} type="password" onChange={ev => setpassword(ev.target.value)}></Input>
                 <Button type="submit">Entrar</Button>
             </Form>
             <StyledLink to="/sign-up">Primeira vez? Cadastre-se!</StyledLink>
@@ -75,6 +75,7 @@ const Input = styled.input`
     height: 58px;
     border-radius: 5px;
     margin-bottom: 13px;
+    padding-left: 20px;
     border: none;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
