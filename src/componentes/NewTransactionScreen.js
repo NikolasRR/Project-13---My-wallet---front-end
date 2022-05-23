@@ -26,7 +26,8 @@ function NewTransactionScreen() {
                 description: description
             },
             {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
+                withCredentials: true
             }
         )
         .then(res => {

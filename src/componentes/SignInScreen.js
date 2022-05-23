@@ -19,7 +19,7 @@ function SignInScreen() {
         {
             email: email,
             password: password
-        });
+        }, { withCredentials: true });
         promisse.then(res => {
             localStorage.setItem("userToken", JSON.stringify(res.data));
             setToken(res.data);

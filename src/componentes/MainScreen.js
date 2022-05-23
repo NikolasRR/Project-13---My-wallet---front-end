@@ -22,7 +22,8 @@ function MainScreen() {
         if (token) {
             axios.get("http://localhost:5000/main",
                 {
-                    headers: { Authorization: `Bearer ${token}` }
+                    headers: { Authorization: `Bearer ${token}` },
+                    withCredentials: true
                 })
                 .then(res => {
                     setstatement(res.data.statement);
